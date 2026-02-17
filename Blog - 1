@@ -1,0 +1,27 @@
+Mulesoft Architecture Enterpise flows - API led connectivity Architechture
+                ┌─────────────────────────┐
+                │      Client Apps        │
+                │  Mobile | Web | Partner │
+                └────────────┬────────────┘
+                             ↓
+                ┌─────────────────────────┐
+                │     Experience APIs     │
+                │  (Channel-specific)     │
+                └────────────┬────────────┘
+                             ↓
+                ┌─────────────────────────┐
+                │      Process APIs       │
+                │  (Business Logic)       │
+                └────────────┬────────────┘
+                             ↓
+                ┌─────────────────────────┐
+                │       System APIs       │
+                │ (Backend Connectivity)  │
+                └────────────┬────────────┘
+                             ↓
+        ┌────────────────────────────────────────┐
+        │  Backend Systems                       │
+        │  DB | SAP | Salesforce | Legacy Apps   │
+        └────────────────────────────────────────┘
+
+
