@@ -24,4 +24,80 @@ Mulesoft Architecture Enterpise flows - API led connectivity Architechture
         │  DB | SAP | Salesforce | Legacy Apps   │
         └────────────────────────────────────────┘
 
+Internal Mule Application Architecture
 
+Inside one Mule application: 
+
+HTTP Listener (Source)
+        ↓
+Flow
+        ↓
+Logger
+        ↓
+DataWeave Transformation
+        ↓
+Database / HTTP Connector
+        ↓
+Error Handler
+        ↓
+Response
+
+Key Components:
+
+Event Source
+Flow
+Processors
+Transformers
+Connectors
+Global Error Handler
+
+Anypoint Platform Architecture
+
+                 Anypoint Platform
+ ┌───────────────────────────────────────────┐
+ │ Design Center                            │
+ │ Exchange                                  │
+ │ API Manager                               │
+ │ Runtime Manager                           │
+ │ Monitoring                                │
+ └───────────────────────────────────────────┘
+Applications run on:
+
+CloudHub
+Runtime Fabric
+On-Prem Servers
+
+CloudHub Deployment Architecture
+
+Client
+   ↓
+Load Balancer
+   ↓
+CloudHub Worker (Mule Runtime)
+   ↓
+VPC
+   ↓
+Backend Systems
+
+Supports:
+
+Horizontal Scaling
+Auto restart
+High availability
+
+Current Architecture followed in Corporates
+
+Client Apps
+     ↓
+Experience API
+     ↓
+Process API
+     ↓
+System API
+     ↓
+Database / External System
+
+Reusability
+Loose coupling
+Scalability
+API governance
