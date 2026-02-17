@@ -24,7 +24,136 @@ Mulesoft Architecture Enterpise flows - API led connectivity Architechture
         │  DB | SAP | Salesforce | Legacy Apps   │
         └────────────────────────────────────────┘
 
+API-led connectivity is a layered architecture approach where integrations are broken into reusable APIs organized into three distinct layers:
+
+-System APIs
+-Process APIs
+-Experience APIs
+
+Instead of tightly coupling systems together, everything communicates through managed APIs.
+Now let’s understand each layer in depth.
+
+System APIs (Foundation Layer)
+
+Purpose: - Expose backend systems in a controlled and reusable way.
+
+What they do:
+
+- Connect to databases
+- Connect to SAP
+- Connect to Salesforce
+- Connect to legacy systems
+- Hide system complexity
+
+Important Characteristics:
+
+- No business logic
+- Just expose system data cleanly
+- Reusable across multiple processes
+
+Example:
+
+A System API for Customer DB:
+
+GET /customers/{id}
+POST /customers
+
+
+Process APIs (Business Logic Layer)
+
+Purpose: Orchestrate multiple System APIs and apply business rules.
+
+What they do:
+
+- Combine data from multiple systems
+- Apply validations
+- Perform transformations
+- Implement business workflows
+
+Example:
+
+To fetch full customer details:
+
+ - Call Customer System API
+ - Call Orders System API
+ - Merge data
+ - Return unified response
+
+This layer contains:
+
+- DataWeave transformations
+- Routing
+- Orchestration
+- Business rules
+
+Experience APIs (Channel-Specific Layer)
+
+Purpose: Provide data formatted specifically for client applications.
+
+Different channels need different formats:
+
+- Mobile
+- Web
+- Partner system
+
+Example:
+Mobile app might need:
+{
+  name,
+  lastOrderDate
+}
+Web app might need:
+{
+  name,
+  email,
+  orderHistory,
+  loyaltyPoints
+}
+
+Both call the same Process API but format response differently.
+
+Why API-led Connectivity is Important
+1. Reusability - System APIs can be reused across multiple projects.
+2. Loose Coupling - Front-end changes do not impact backend systems.
+3. Scalability - Each layer can scale independently.
+4. Faster Development - Teams can work independently on different layers.
+5. Governance & Security - Policies can be applied centrally through API Manager.
+
+
+Real-World Example (Banking Scenario)
+
+Imagine:
+
+Mobile App → Check Balance
+Web App → Account Dashboard
+ATM → Withdraw Money
+
+Instead of all directly calling core banking:
+
+You build:
+
+System API → Core Banking
+Process API → Account Services
+Experience APIs → Mobile / Web / ATM
+
+Now:
+
+- Core banking changes → only System API changes
+- Mobile UI changes → only Experience API changes
+
+Very clean separation.
+
+Take away how to Answer in Interviews
+
+API-led connectivity is a layered architectural approach in MuleSoft where integrations are divided into System, Process, and Experience APIs. 
+System APIs expose backend systems, Process APIs handle business orchestration, and Experience APIs tailor responses for specific channels. 
+This approach improves reusability, loose coupling, scalability, and governance.
+
+
+
+
 Internal Mule Application Architecture
+
 
 Inside one Mule application: 
 
