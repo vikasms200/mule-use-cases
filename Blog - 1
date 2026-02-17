@@ -184,7 +184,7 @@ Anypoint Platform Architecture
 
                  Anypoint Platform
  ┌───────────────────────────────────────────┐
- │ Design Center                            │
+ │ Design Center                             │
  │ Exchange                                  │
  │ API Manager                               │
  │ Runtime Manager                           │
